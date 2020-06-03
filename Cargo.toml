@@ -71,6 +71,9 @@ sdl_controller = [
 json = [
     "amethyst_assets/json"
 ]
+toml = [
+    "amethyst_assets/toml"
+]
 saveload = [
     "amethyst_core/saveload"
 ]

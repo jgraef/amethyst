@@ -57,3 +57,22 @@ where
         Ok(val)
     }
 }
+
+/// Format for loading from TOML files.
+#[derive(Clone, Copy, Debug, Serialize, Deserialize)]
+pub struct TomlFormat;
+
+#[cfg(feature = "toml")]
+impl<D> Format<D> for TomlFormat
+where
+    D: for<'a> Deserialize<'a> + Send + Sync + 'static,
+{
+    fn name(&self) -> &'static str {
+        "Toml"
+    }
+
+    fn import_simple(&self, bytes: Vec<u8>) -> Result<D, Error> {
+        toml::from_slice(&bytes)
+            .with_context(|_| format_err!("Failed deserializing Toml file"))
+    }
+}

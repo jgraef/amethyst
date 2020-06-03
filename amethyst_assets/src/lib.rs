@@ -10,7 +10,7 @@
 #![warn(missing_docs, rust_2018_idioms, rust_2018_compatibility)]
 
 #[cfg(feature = "json")]
-pub use crate::formats::JsonFormat;
+pub use crate::formats::{JsonFormat, TomlFormat};
 pub use crate::{
     asset::{Asset, Format, FormatValue, ProcessableAsset, SerializableFormat},
     cache::Cache,
